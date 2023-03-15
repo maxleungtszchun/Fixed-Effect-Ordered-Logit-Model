@@ -8,7 +8,8 @@ fe_ologit <- function (data, y_var, x_vars, i_var, t_var) {
 
   data_copies <-
     matrix(nrow = 0, ncol = length(all_vars), dimnames = list(NULL, all_vars)) %>%
-    as_tibble()
+    as_tibble() %>%
+    mutate_all(as.numeric)
 
   for (k in sort(unique(data[[y_var]]))[-1]) {
     y <-
